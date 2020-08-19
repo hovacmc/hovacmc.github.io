@@ -83,19 +83,21 @@
 				editor = monaco.editor.create(document.getElementById('container'), {
 					value: [
 						"--[[",
-						"	Lua Script",
+						"	",
+						"	Monaco from hovacmc.github.io",
 						"--]]",
+						"print(\"Hello!\")",
 					].join('\n'),
 					language: 'lua',
-					theme: "net-theme-light",
+					theme: "net-theme-dark",
 					folding: true,
 					scrollbar: {
 						verticalHasArrows: true,
 					},
 					dragAndDrop: true,
-					links: false,
+					links: true,
 					minimap: {
-						enabled: false,
+						enabled: true,
 					},
 					showFoldingControls: "always",
 					smoothScrolling: true,
