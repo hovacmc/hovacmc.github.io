@@ -13,7 +13,8 @@
 			}
 		</style>
         <meta charset="utf-8" />
-        <title></title>
+        <title>Monaco</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">  
     </head>
     <body>
 		<div id="container" style="width:100%;height:100%;"></div>
@@ -83,10 +84,34 @@
 				editor = monaco.editor.create(document.getElementById('container'), {
 					value: [
 						"--[[",
-						"	",
-						"	Monaco from hovacmc.github.io",
+						"	Enter your LUA code here!",
+						"	Monaco from https://hovacmc.github.io",
 						"--]]",
 						"print(\"Hello!\")",
+						"",
+						"",
+						"--[[ ",
+						"	 Want to add Monaco to your",
+						"	 exploit? Make a web browser",
+						"	 viewer and set the URL to",
+						"	 this! Make sure the browser",
+						"	 is named \"ScriptTab\"",
+						"",
+						"	 From there, in C#:",
+						"",
+						"	 // Set text:",
+						"	 ScriptTab.Document.InvokeScript(\"SetText\", new object[]",
+						"	 {",
+						"		\"enter your text here\" // This will set the text",
+						"	 });",
+						"",
+						"	 // Read text:",
+						"	 HtmlDocument document = ScriptTab.Document;",
+						"	 string scriptName = \"GetText\";",
+						"	 object[] args = new string[0];",
+						"	 object obj = document.InvokeScript(scriptName, args);",
+						"	 string script = obj.ToString(); // Script = Your text",
+						"]]",
 					].join('\n'),
 					language: 'lua',
 					theme: "net-theme-dark",
