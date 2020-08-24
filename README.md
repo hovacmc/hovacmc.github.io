@@ -1,5 +1,3 @@
-[![Follow me][https://img.shields.io/twitter/follow/haxx64?style=flat-square]][https://twitter.com/haxx64] 
-
 <br />
 <p align="center">
   <a href="https://hovacmc.github.io">
