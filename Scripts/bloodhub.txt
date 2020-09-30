@@ -1,4 +1,7 @@
 _G.BloodHubCoreGUI = true -- Set this to true for CoreGui
+wait(.2) -- Delete this if you are using something good like Synapse X
+--    ^ Keep this if you're using JJSploit or something not so good
+
 --[[
 	
 	 ▄▄▄▄    ██▓     ▒█████   ▒█████  ▓█████▄  ██░ ██  █    ██  ▄▄▄▄      ▒██   ██▒
@@ -2425,6 +2428,16 @@ for i,v in pairs(Holder:GetChildren()) do
 	end
 end
 end)
+
+for i,v in pairs(Holder:GetChildren()) do
+	if v:IsA("Frame") then
+		if v.Name == "Home" then
+			v:TweenPosition(UDim2.new(0, 0,0, 0), 'Out', 'Quint', 0.2)
+		else
+			v:TweenPosition(UDim2.new(1, 0,0, 0), 'Out', 'Quint', 0.2)
+		end
+	end
+end
 
 LocalPlayerImage.Image = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" .. plr.Name
 
