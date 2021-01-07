@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>lol</title>
+    </head>
+    <body>
+        <pre id="output"></pre>
+
+        <script>
+        var out = document.getElementById("output");
+        function printf(x) {
+            out.textContent = (out.textContent ? out.textContent + '\n' : '') + x;
+        }
+
+        var response = "a";
+
+        printf(response);
+        </script>
+    </body>
+</html>
