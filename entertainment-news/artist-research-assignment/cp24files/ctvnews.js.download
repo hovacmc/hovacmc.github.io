@@ -1,0 +1,171 @@
+(function(w, d) {
+  'use strict';
+  var s1 = d.getElementsByTagName('script')[0],
+    s = d.createElement('script'),
+    pageFn,
+    attr,
+    onReady;
+  s.src = '//tru.am/scripts/ta-pagesocial-sdk.js';
+
+  var l = document.location,
+    u = l.protocol + '//' + l.host + l.pathname,
+    h = l.hostname.toLowerCase(),
+    cid;
+
+  attr = function(domQ, name) {
+    var l = document.querySelector(domQ);
+    if (l) {
+      // Use getAttribute() to avoid encoded strings.
+      return l.getAttribute(name);
+    }
+    return undefined;
+  };
+
+  function parse_query_string(query) {
+    var vars = query.split('&');
+    var query_string = {};
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      // If first entry with this name
+      if (typeof query_string[pair[0]] === 'undefined') {
+        query_string[pair[0]] = decodeURIComponent(pair[1]);
+        // If second entry with this name
+      } else if (typeof query_string[pair[0]] === 'string') {
+        var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+        query_string[pair[0]] = arr;
+        // If third or later entry with this name
+      } else {
+        query_string[pair[0]].push(decodeURIComponent(pair[1]));
+      }
+    }
+    return query_string;
+  }
+
+  pageFn = function() {
+    var l = document.location,
+      u = l.protocol + '//' + l.host + l.pathname,
+      h = l.hostname.toLowerCase(),
+      queryString = parse_query_string(l.search.replace('?', '')),
+      clipId = queryString.clipId,
+      binId = queryString.binId,
+      specialSection = queryString.specialSection,
+      ogtitle = attr('meta[property="og:title"]', 'content'),
+      emptyPageMeta = {
+        canonical: '',
+        'og:type': '',
+        'og:url': '',
+      },
+      stdPageMeta = {
+        canonical: attr('link[rel="canonical"]', 'href'),
+        'og:type': attr('meta[property="og:type"]', 'content'),
+        'og:url': attr('meta[property="og:url"]', 'content'),
+      };
+
+    // Exclude pages with Title starting with CFTO, they are drafts
+    var patt = /^CFTO/g;
+    var result = patt.exec(ogtitle);
+    if (result != null) {
+      // Title starts with CFTO, do not add content
+      return emptyPageMeta;
+    }
+
+    if (h.indexOf('calgary.ctvnews.ca') > -1 && u.indexOf('/video') > -1) {
+      if (clipId && binId) {
+        if (specialSection) {
+          return stdPageMeta;
+        } else {
+          var clipArticleTag = document.getElementById(clipId);
+          if (clipArticleTag) {
+            var dynamicClipShow = clipArticleTag.getAttribute('clipShow');
+            if (dynamicClipShow) {
+              return stdPageMeta;
+            } else {
+              return emptyPageMeta;
+            }
+          } else {
+            return emptyPageMeta;
+          }
+        }
+      } else {
+        return emptyPageMeta;
+      }
+    } else if (h.indexOf('cp24.com') > -1) {
+      if (u.indexOf('/video') > -1) {
+        if (clipId && binId) {
+          return stdPageMeta;
+        } else {
+          return emptyPageMeta;
+        }
+      } else {
+        // Remove query string
+        stdPageMeta.canonical = stdPageMeta.canonical.split(/[?#]/)[0];
+        stdPageMeta['og:url'] = stdPageMeta['og:url'].split(/[?#]/)[0];
+        return stdPageMeta;
+      }
+    } else {
+      return stdPageMeta;
+    }
+  };
+
+  onReady = function() {
+    if (h.indexOf('bc.ctvnews.ca') > -1) {
+	  cid = '1184';
+	} else if (h.indexOf('calgary.ctvnews.ca') > -1) {
+	  cid = '1185';
+	} else if (h.indexOf('toronto.ctvnews.ca') > -1) {
+	  cid = '1269';
+	} else if (h.indexOf('saskatoon.ctvnews.ca') > -1) {
+	  cid = '1270';
+	} else if (h.indexOf('regina.ctvnews.ca') > -1) {
+	  cid = '1296';
+	} else if (h.indexOf('edmonton.ctvnews.ca') > -1) {
+	  cid = '1306';
+	} else if (h.indexOf('atlantic.ctvnews.ca') > -1) {
+	  cid = '1307';
+	} else if (h.indexOf('barrie.ctvnews.ca') > -1) {
+	  cid = '1386';
+	} else if (h.indexOf('ottawa.ctvnews.ca') > -1) {
+	  cid = '1387';
+	} else if (h.indexOf('montreal.ctvnews.ca') > -1) {
+	  cid = '1388';
+	} else if (h.indexOf('winnipeg.ctvnews.ca') > -1) {
+	  cid = '1389';
+	} else if (h.indexOf('london.ctvnews.ca') > -1) {
+	  cid = '1390';
+	} else if (h.indexOf('northernontario.ctvnews.ca') > -1) {
+	  cid = '1391';
+	} else if (h.indexOf('kitchener.ctvnews.ca') > -1) {
+	  cid = '1392';
+	} else if (h.indexOf('vancouverisland.ctvnews.ca') > -1) {
+	  cid = '1393';
+	} else if (h.indexOf('windsor.ctvnews.ca') > -1) {
+	  cid = '1394';
+	} else if (h.indexOf('ctvnews.ca') > -1) {
+	  cid = '1070';
+	} else if (h.indexOf('cp24.com') > -1) {
+	  cid = '1431';
+	}
+	
+	if (cid) {
+	  if (u.indexOf('/video') == -1) {
+	    w.TRUE_ANTHEM.configure(cid, { page: pageFn });
+	  } else {
+        $(document).ajaxStop(function() {
+          w.TRUE_ANTHEM.configure(cid, { page: pageFn });
+        });	
+	  }	
+	}
+  };
+
+  if (s.addEventListener) {
+    s.addEventListener('load', onReady, false);
+  } else {
+    s.onreadystatechange = function() {
+      if (s.readyState in { loaded: 1, complete: 1 }) {
+        s.onreadystatechange = null;
+        onReady();
+      }
+    };
+  }
+  s1.parentNode.insertBefore(s, s1);
+})(window, document);

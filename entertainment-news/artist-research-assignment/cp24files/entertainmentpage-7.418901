@@ -1,0 +1,64 @@
+    body .sidebar .element.tabviewelement .element.teaser .teaser-image-wrapper.teaser-image-top .bn-headline{display:none;}
+body .sidebar .element.tabviewelement .ui-tabs-panel{background:none;}
+body .sidebar .element.list.topstorybn ul.linklist li.dc .element.teaser .teaser-image-wrapper.teaser-image-top .bn-headline h2.teaserTitle a,
+body .sidebar .element.tabviewelement .element.teaser .teaser-image-wrapper.teaser-image-top .bn-headline h2.teaserTitle a{
+    font-size: 1.5em; padding: 10px; width: 280px; line-height: 1.1; color: #fff; /*text-decoration: none;*/
+}
+body .sidebar .element.tabviewelement .element.teaser  .teaser-image-top .bn-headline{bottom:10px;}
+body .sidebar .topstorybn .linklist li,
+body .sidebar .tabviewelement .linklist li{
+    background: none; font-size: 0.7em; padding: 0 0 1em 0em;
+}
+
+
+
+.threeColumns.listHorizontal .col2{margin-top:0;}
+
+/*.content .content-wrapper { padding-top: 0 !important; }*/
+
+/* Band-aid */
+.twoColumns.listHorizontal .col2 .linklist a {
+    /*padding: 0 0 1em 1em;*/
+}
+
+.threeColumns .teaserTitle a {
+    font-size: 0.85em;
+}
+
+/* Band-aid */
+/*
+.threeColumns .teaserTitle, .threeColumns .topstorybn .teaserTitle,
+.threeColumns.columnsplitter.listHorizontal .element .linklist .teaser-image-top .teaserTitle a, .threeColumns.columnsplitter.listHorizontalTop .element .linklist .teaser-image-top .teaserTitle a, .threeColumns.columnsplitter .topstorybn .element .linklist .teaser-image-top .teaserTitle a{width: auto !important;}
+*/
+body .threeColumns .teaserTitle,
+body .threeColumns .topstorybn .teaserTitle{ width: 190px !important; }
+body .threeColumns.columnsplitter.listHorizontal .element .linklist .teaser-image-top .teaserTitle a,
+body .threeColumns.columnsplitter.listHorizontalTop .element .linklist .teaser-image-top .teaserTitle a,
+body .threeColumns.columnsplitter .topstorybn .element .linklist .teaser-image-top .teaserTitle a{ padding: 10px 7px 5px 7px; width: 176px !important; }
+
+
+
+/*
+.content-secondary .videoPromosHomepage.teaserGrid .twoCol .teaser, .content-secondary .videoPromosHomepage.teaserGrid .twoCol .teaser-image-wrapper, .content-secondary .videoPromosHomepage.teaserGrid .twoCol .teaser-image-wrapper img, .content-secondary .topstorybn.teaserGrid .twoCol .teaser, .content-secondary .topstorybn.teaserGrid .twoCol .teaser-image-wrapper img, .content-secondary .topStoryPromo.teaserGrid .twoCol .teaser, .content-secondary .topStoryPromo.teaserGrid .twoCol .teaser .teaser-image-wrapper img{ width: 140px !important; }
+
+.content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a, .content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a, .content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a { width: 120px !important; }
+
+.content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a, .content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a, .content-secondary .videoPromosHomepage .linklist .grid .teaser-image-top .teaserTitle a {
+  padding: 10px 10px;
+}
+*/
+
+/*.content-secondary .videoPromosHomepage.teaserGrid .bn-headline {
+  padding: 0px;
+}*/
+/*
+.content-secondary .videoPromosHomepage.teaserGrid .grid .bn-headline{
+  min-height: 60px;
+  height: 60px;
+  max-height: 80px;
+}
+*/
+.content-secondary .videoPromosHomepage span.vidWatch{ display: none;}
+
+.content-secondary .videoPromosHomepage .teaserTitle a:hover{ text-decoration: underline; }
+
